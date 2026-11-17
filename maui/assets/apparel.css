@@ -1,0 +1,58 @@
+/* Forward Maui Apparel page: page-specific styles on top of styles.css */
+.nav__link[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--coral)}
+.a-hero .hero__media img{object-position:50% 55%}
+
+/* sticky chip nav */
+.chips{position:sticky;top:var(--header-h);z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.chips__in{display:flex;gap:10px;overflow-x:auto;padding-block:12px;scrollbar-width:none}
+.chips__in::-webkit-scrollbar{display:none}
+.chips a{flex:none;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border:1.5px solid var(--ink);border-radius:999px;
+  transition:background-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.chips a:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.a-sec{scroll-margin-top:calc(var(--header-h) + 56px)}
+
+/* feature photo + cards */
+.a-group{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:clamp(16px,2vw,28px);align-items:start}
+.a-group--rev{grid-template-columns:minmax(0,2.2fr) minmax(0,1fr)}
+.a-group--rev .a-feature{order:2}
+.a-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,28px) clamp(12px,1.5vw,20px)}
+.a-group--rev .a-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.a-cards--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.a-feature{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:var(--tile);color:#fff;isolation:isolate}
+.a-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.a-feature:hover img{transform:scale(1.06)}
+.a-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(5,22,33,.78),rgba(5,22,33,0) 50%)}
+.a-feature figcaption{position:absolute;z-index:2;left:22px;right:22px;bottom:20px}
+.a-feature span{display:block;font-family:var(--f-display);font-stretch:62%;font-weight:900;font-size:clamp(34px,3.5vw,52px);text-transform:uppercase;line-height:.9}
+.a-feature small{display:block;font-size:13px;margin-top:8px;color:rgba(255,255,255,.86)}
+.a-note{display:flex;flex-direction:column;justify-content:center;gap:16px;align-items:flex-start;padding:clamp(20px,2.4vw,36px);background:var(--navy);color:#fff;aspect-ratio:4/5}
+.a-note p:not(.eyebrow){font-family:var(--f-serif);font-size:clamp(24px,2.2vw,32px);line-height:1.15}
+.section--sand .a-note{background:var(--ink)}
+
+/* hoodie / poncho rows */
+.a-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(28px,6vw,96px);align-items:center}
+.a-row--rev .a-row__card{order:2}
+.a-row__card{max-width:460px;width:100%;justify-self:center}
+.a-row__text{display:grid;gap:20px;justify-items:start;max-width:520px}
+.a-row__text p{font-size:17px;color:var(--mute)}
+.a-points{display:flex;flex-wrap:wrap;gap:8px}
+.a-points li{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff}
+
+@media (max-width:900px){
+  .a-group,.a-group--rev{grid-template-columns:1fr}
+  .a-group--rev .a-feature{order:0}
+  .a-feature{aspect-ratio:5/4}
+  .a-cards,.a-group--rev .a-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .a-note{aspect-ratio:auto;min-height:200px}
+  .a-row,.a-row--rev{grid-template-columns:1fr}
+  .a-row--rev .a-row__card{order:0}
+  .a-row__card{max-width:420px}
+}
+@media (prefers-reduced-motion:reduce){
+  .chips a,.a-feature img{transition:none}
+  .chips a:hover,.a-feature:hover img{transform:none}
+}
+html.reduce-motion .chips a,html.reduce-motion .a-feature img{transition:none}
+html.reduce-motion .chips a:hover,html.reduce-motion .a-feature:hover img{transform:none}
+
+.a-preview{margin:-.5rem 0 1.25rem;font-size:.8rem;letter-spacing:.02em;opacity:.65}
